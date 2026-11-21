@@ -6,7 +6,7 @@ from telebot import types
 TOKEN = os.environ.get("8890663489:AAGT4d3qPpl46GSUiK4pLJRmB-8SYp1pFgs")
 
 if not TOKEN:
-    raise ValueError("Не найден BOT_TOKEN!")
+    raise ValueError("8890663489:AAGT4d3qPpl46GSUiK4pLJRmB-8SYp1pFgs")
 
 bot = telebot.TeleBot(TOKEN)
 
