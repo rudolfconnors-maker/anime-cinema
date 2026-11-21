@@ -1,4 +1,3 @@
-bot.py
 
 import os
 import telebot
@@ -7,9 +6,10 @@ from telebot import types
 TOKEN = os.environ.get("8890663489:AAGT4d3qPpl46GSUiK4pLJRmB-8SYp1pFgs")
 
 if not TOKEN:
-    raise ValueError("Не задан BOT_TOKEN")
+    raise ValueError("Не найден BOT_TOKEN!")
 
 bot = telebot.TeleBot(TOKEN)
+
 
 @bot.message_handler(commands=["start"])
 def start(message):
@@ -23,44 +23,44 @@ def start(message):
 
     bot.send_message(
         message.chat.id,
-        "🍿 ANIME CINEMA\n\n"
-        "Добро пожаловать в твой аниме-кинотеатр!\n\n"
-        "Выбери раздел ниже 👇",
+        "🍿 ДОБРО ПОЖАЛОВАТЬ В ANIME CINEMA!\n\n"
+        "Твой собственный мир аниме!\n"
+        "Выбери нужный раздел 👇",
         reply_markup=keyboard
     )
 
+
 @bot.message_handler(func=lambda m: True)
 def menu(message):
-    text = message.text
-
-    if text == "🎬 Каталог":
+    if message.text == "🎬 Каталог":
         bot.send_message(
             message.chat.id,
-            "🎬 Каталог аниме скоро откроется!"
+            "🎬 Каталог аниме скоро появится!"
         )
 
-    elif text == "🔎 Поиск":
+    elif message.text == "🔎 Поиск":
         bot.send_message(
             message.chat.id,
             "🔎 Напиши название аниме."
         )
 
-    elif text == "❤️ Избранное":
+    elif message.text == "❤️ Избранное":
         bot.send_message(
             message.chat.id,
             "❤️ Здесь будут твои любимые аниме."
         )
 
-    elif text == "✨ Рекомендации":
+    elif message.text == "✨ Рекомендации":
         bot.send_message(
             message.chat.id,
-            "✨ Скоро здесь появятся рекомендации!"
+            "✨ Скоро появятся рекомендации!"
         )
 
-    elif text == "ℹ️ О боте":
+    elif message.text == "ℹ️ О боте":
         bot.send_message(
             message.chat.id,
-            "🌸 ANIME CINEMA\nТвой мир аниме!"
+            "🌸 ANIME CINEMA\n"
+            "Твой личный аниме-кинотеатр!"
         )
 
     else:
@@ -68,6 +68,7 @@ def menu(message):
             message.chat.id,
             "Выбери раздел в меню 👇"
         )
+
 
 print("ANIME CINEMA запущен!")
 bot.infinity_polling()
